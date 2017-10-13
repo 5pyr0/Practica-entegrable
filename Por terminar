@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<iostream>
+#include<stdlib.h>
+
+int desplazamiento ( int , int );
+
+int main()
+{
+	int dis_in,num_salto,dis_act,salto;
+	char rep;
+
+		printf("\t\tSIMULACION UNIVERSO RADIAL ENTERO\n");
+		printf("\t\t*********************************\n\n");
+	
+	do{
+	
+		num_salto=0;
+			printf("\n\tIntroduce la distancia de la particula al centro: ");
+			fflush(stdin);
+			scanf("%d",&dis_in);
+			printf("\n\tComineza la simulacion:\n ");
+			dis_act=abs(dis_in);
+					
+		do{
+			salto=rand()%6+1;
+				printf("\tDistancia de la particula al centro en el salto numero %d: %d \n",num_salto,dis_act);
+				printf("\tDistancia de este salto %d\n",salto); 
+			num_salto++;
+			dis_act = desplazamiento(dis_act,salto);
+			
+		}while(dis_act!=0);
+		
+			printf("\tLa particula ha realizado un total de %d saltos\n",num_salto);
+			printf("\tFin de la simulacion\n ");
+			printf("\tRealizamos otra simulacion [ s , n ]: ");
+			fflush(stdin);
+			scanf("%c", &rep);
+		
+		}while(rep == 's');
+	
+	return 0;
+}
+
+int desplazamiento (int d, int s)
+{
+	int pos;
+	pos=(d-s);
+	d=abs(pos);
+	
+	return d;
+}
